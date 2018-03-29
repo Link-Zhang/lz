@@ -42,5 +42,4 @@ public class SpringContextUtil implements ApplicationContextAware {
     public static Class getType(String beanName) {
         return context.getType(beanName);
     }
-
 }
