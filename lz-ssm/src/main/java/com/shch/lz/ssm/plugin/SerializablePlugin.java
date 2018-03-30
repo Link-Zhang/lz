@@ -10,9 +10,9 @@ import java.util.Properties;
 /**
  * Created by Link at 19:25 on 3/30/18.
  */
+// todo wtf?
 public class SerializablePlugin extends PluginAdapter {
     private FullyQualifiedJavaType serializable = new FullyQualifiedJavaType("java.io.serializable");
-    // todo wtf?
     private FullyQualifiedJavaType gwtSerializable = new FullyQualifiedJavaType("com.google.gwt.user.client.rpc.IsSerializabl");
     private boolean addGWTInterface;
     private boolean suppressJavaInterface;
