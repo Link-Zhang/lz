@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+    <properties resource="generator.properties"/>
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator type="com.zheng.common.plugin.CommentGenerator">
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- mysql delimiter: `  oracle delimiter: "  -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- use properties from  generator.properties except password -->
+        <jdbcConnection driverClass="${generator.jdbc.driver}" connectionURL="${generator.jdbc.url}"
+                        userId="${generator.jdbc.username}" password="${generator_jdbc_password}"/>
+        <javaModelGenerator targetPackage="${generator_javaModelGenerator_targetPackage}"
+                            targetProject="${targetProject}/src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="${generator_sqlMapGenerator_targetPackage}"
+                         targetProject="${targetProject_sqlMap}/src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="${generator_javaClientGenerator_targetPackage}"
+                             targetProject="${targetProject}/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="com.shch.lz.ssm.plugin.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false"/>
+        </plugin>
+        <!-- todo LoggingEhcache Deprecated -->
+        <plugin type="org.mybatis.generator.plugins.CachePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        #foreach($table in $tables)
+            #if($last_insert_id_tables.containsKey($!table.table_name) == true)
+                <table tableName="$!table.table_name" domainObjectName="$!table.model_name">
+                    <generatedKey column="$!last_insert_id_tables.get($!table.table_name)" sqlStatement="MySql"
+                                  identity="true"/>
+                </table>
+            #else
+                <table tableName="$!table.table_name" domainObjectName="$!table.model_name"></table>
+            #end
+        #end
+    </context>
+</generatorConfiguration>

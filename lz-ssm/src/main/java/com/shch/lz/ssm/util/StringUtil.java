@@ -104,14 +104,4 @@ public class StringUtil {
     public static boolean getBoolean(Object object) {
         return getBoolean(object, false);
     }
-
-//    public static void main(String[] args) {
-//        String result = StringUtil.underlineToHump("hello_world_fuck");
-//        System.out.println(result);
-//        System.out.println(StringUtil.humpToUnderline(result));
-//        String rs = StringUtil.humpToUnderline("HelloWorldFuck");
-//        System.out.println(rs);
-//        System.out.println(StringUtil.underlineToHump(rs));
-//    }
-
 }

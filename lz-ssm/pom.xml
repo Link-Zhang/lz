@@ -41,6 +41,7 @@
         <servlet-api-version>4.0.0</servlet-api-version>
         <fluent-validator-version>1.0.9</fluent-validator-version>
         <ehcache-version>3.5.2</ehcache-version>
+        <velocity-version>1.7</velocity-version>
     </properties>
 
     <dependencyManagement>
@@ -266,6 +267,14 @@
             <artifactId>ehcache</artifactId>
             <version>${ehcache-version}</version>
         </dependency>
+
+        <!--velocity-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${velocity-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

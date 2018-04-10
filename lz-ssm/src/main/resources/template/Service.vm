@@ -1,0 +1,12 @@
+package ${package_name}.rpc.api;
+
+import com.shch.lz.ssm.base.BaseService;
+import ${package_name}.dao.model.${model};
+import ${package_name}.dao.model.${model}Example;
+
+/**
+* Created by Link at ${create_time} on ${create_date}.
+*/
+public interface ${model}Service extends BaseService<${model}, ${model}Example}> {
+
+}
