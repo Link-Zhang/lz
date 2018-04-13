@@ -1,33 +1,25 @@
 package com.shch.lz.ssm.db;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Created by Link at 14:09 on 3/29/18.
  */
+@AllArgsConstructor
 public enum DataSourceEnum {
     MASTER("masterDataSource", true), SLAVE("slaveDataSource", false),;
 
+    @Setter
+    @Getter
     private String name;
+
+    @Setter
     private boolean master;
-
-    DataSourceEnum(String name, boolean master) {
-        this.name = name;
-        this.master = master;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public boolean isMaster() {
         return master;
-    }
-
-    public void setMaster(boolean master) {
-        this.master = master;
     }
 
     public String getDefault() {

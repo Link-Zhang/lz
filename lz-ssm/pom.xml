@@ -42,6 +42,8 @@
         <fluent-validator-version>1.0.9</fluent-validator-version>
         <ehcache-version>3.5.2</ehcache-version>
         <velocity-version>1.7</velocity-version>
+        <commons-io-version>2.6</commons-io-version>
+        <lombok-version>1.16.20</lombok-version>
     </properties>
 
     <dependencyManagement>
@@ -273,6 +275,21 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>${velocity-version}</version>
+        </dependency>
+
+        <!--commons-io-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io-version}</version>
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

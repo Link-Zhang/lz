@@ -5,6 +5,8 @@ package com.shch.lz;
  */
 public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("hello, world");
+        int page=4;
+        int step=3;
+        System.out.println((page - (int) Math.floor((double) step / 2)));
     }
 }

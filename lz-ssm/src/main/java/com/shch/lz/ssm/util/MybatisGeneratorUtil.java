@@ -14,7 +14,7 @@ import java.util.*;
 /**
  * Created by Link at 13:04 on 4/8/18.
  */
-    public class MybatisGeneratorUtil {
+public class MybatisGeneratorUtil {
     private static String generatorConfig_vm = "/template/generatorConfig.vm";
     private static String service_vm = "/template/Service.vm";
     private static String serviceMock_vm = "/template/ServiceMock.vm";
@@ -35,13 +35,13 @@ import java.util.*;
     private static String SERVICE_IMPL_JAVA_SUBFFIX = "ServiceImpl.java";
     private static String GENERATOR_CONFIG_XML_NAME = "generatorConfig.xml";
 
-    public static void main(String[] args) throws Exception {
-        String createDate = new SimpleDateFormat(DATE_FORMAT_PATTERN).format(new Date());
-        String createTime = new SimpleDateFormat(TIME_FORMAT_PATTERN).format(new Date());
-        System.out.println(createDate);
-        System.out.println(createTime);
-//        MybatisGeneratorUtil.generator("jdbcDriver", "jdbcUrl", "jdbcUsername", "jdbcPassword", "module", "database", "tablePrefix", "packageName", null);
-    }
+//    public static void main(String[] args) throws Exception {
+//        String createDate = new SimpleDateFormat(DATE_FORMAT_PATTERN).format(new Date());
+//        String createTime = new SimpleDateFormat(TIME_FORMAT_PATTERN).format(new Date());
+//        System.out.println(createDate);
+//        System.out.println(createTime);
+////        MybatisGeneratorUtil.generator("jdbcDriver", "jdbcUrl", "jdbcUsername", "jdbcPassword", "module", "database", "tablePrefix", "packageName", null);
+//    }
 
     public static void generator(String jdbcDriver, String jdbcUrl, String jdbcUsername, String jdbcPassword, String module, String database, String tablePrefix, String packageName, Map<String, String> lastInsertIdTables) throws Exception {
         MybatisGeneratorUtil.osHandler();
@@ -51,7 +51,6 @@ import java.util.*;
         String generatorConfigXmlPath = MybatisGeneratorUtil.class.getResource("/").getPath().replace
                 (TARGET_CLASSES_DIRECTORY, "") + RESOURCE_SOURCE_DIRECTORY + GENERATOR_CONFIG_XML_NAME;
         targetProject = basePath + "/" + targetProject;
-//        System.out.println(generatorConfigXmlPath);
         List<Map<String, Object>> tables = MybatisGeneratorUtil.generatorConfigXml(jdbcDriver, jdbcUrl, jdbcUsername, jdbcPassword, module, database, tablePrefix, packageName, lastInsertIdTables, basePath, targetProject, generatorConfigXmlPath);
         MybatisGeneratorUtil.generatorMybatis(generatorConfigXmlPath);
         MybatisGeneratorUtil.generateServices(basePath, module, packageName, tables);
@@ -74,8 +73,7 @@ import java.util.*;
         }
     }
 
-    private static List<Map<String, Object>> generatorConfigXml(String jdbcDriver, String jdbcUrl, String jdbcUsername, String jdbcPassword, String module, String database, String tablePrefix, String packageName, Map<String, String> lastInsertIdTables, String basePath, String targetProject, String generatorConfigXmlPath)
-            throws Exception {
+    private static List<Map<String, Object>> generatorConfigXml(String jdbcDriver, String jdbcUrl, String jdbcUsername, String jdbcPassword, String module, String database, String tablePrefix, String packageName, Map<String, String> lastInsertIdTables, String basePath, String targetProject, String generatorConfigXmlPath) {
         System.out.println("====== Start Generating File: generatorConfig.xml ======");
         // get table names from database
         String sql = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema =  '" + database + "' " + "AND table_name LIKE '" + tablePrefix + "_%';";
@@ -128,7 +126,7 @@ import java.util.*;
         System.out.println("====== Run Mybatis Generator Complete ======");
     }
 
-    private static void generateServices(String basePath, String module, String packageName, List<Map<String, Object>> tables) {
+    private static void generateServices(String basePath, String module, String packageName, List<Map<String, Object>> tables) throws Exception {
         System.out.println("====== Start Generating Services ======");
         String createDate = new SimpleDateFormat(DATE_FORMAT_PATTERN).format(new Date());
         String createTime = new SimpleDateFormat(TIME_FORMAT_PATTERN).format(new Date());
@@ -148,7 +146,7 @@ import java.util.*;
         System.out.println("====== Generate Services Complete ======");
     }
 
-    private static void generateService(String path, String subfix, String serviceVM, String packageName, String model, String createDate, String createTime) {
+    private static void generateService(String path, String subfix, String serviceVM, String packageName, String model, String createDate, String createTime) throws Exception {
         String service = path + "/" + model + subfix;
         File file = new File(service);
         if (!file.exists()) {
