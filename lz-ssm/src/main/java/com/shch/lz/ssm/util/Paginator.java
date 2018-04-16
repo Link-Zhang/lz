@@ -84,12 +84,12 @@ public class Paginator {
                 url += "?" + params;
             }
         }
-        // todo String to StringBuilder
-        String pages = "";
+        StringBuilder pages = new StringBuilder("");
+//        String pages = "";
         int pageCount = (int) Math.ceil((double) total / rows);
         if (pageCount <= 1) {
             // only one page
-            return pages;
+            return pages.toString();
         }
         if (page > pageCount) {
             page = pageCount;
@@ -139,62 +139,62 @@ public class Paginator {
         }
         // next page
         pages = addNextPage(pages, pageCount);
-        return pages;
+        return pages.toString();
     }
 
-    private String addPreviousPage(String pages) {
+    private StringBuilder addPreviousPage(StringBuilder pages) {
         if (page > 1) {
             if (url.contains("?")) {
-                pages = pages.concat("<a class=\"prev\" href=\"" + url + "&" + param + "=" + (page - 1) + "\"> < </a>\n");
+                pages = pages.append("<a class=\"prev\" href=\"" + url + "&" + param + "=" + (page - 1) + "\"> < </a>\n");
             } else {
-                pages = pages.concat("<a class=\"prev\" href=\"" + url + "?" + param + "=" + (page - 1) + "\"> < </a>\n");
+                pages = pages.append("<a class=\"prev\" href=\"" + url + "?" + param + "=" + (page - 1) + "\"> < </a>\n");
             }
         } else {
-            pages = pages.concat("<a class=\"prev\" href=\"javascript:;\" style=\"color:#ccc\"> < </a>\n");
+            pages = pages.append("<a class=\"prev\" href=\"javascript:;\" style=\"color:#ccc\"> < </a>\n");
         }
         return pages;
     }
 
-    private String addNextPage(String pages, int pageCount) {
+    private StringBuilder addNextPage(StringBuilder pages, int pageCount) {
         if (page < pageCount) {
             if (url.contains("?")) {
-                pages = pages.concat("<a class=\"next\" href=\"" + url + "&" + param + "=" + (page + 1) + "\"> > </a>\n");
+                pages = pages.append("<a class=\"next\" href=\"" + url + "&" + param + "=" + (page + 1) + "\"> > </a>\n");
             } else {
-                pages = pages.concat("<a class=\"next\" href=\"" + url + "?" + param + "=" + (page + 1) + "\"> > </a>\n");
+                pages = pages.append("<a class=\"next\" href=\"" + url + "?" + param + "=" + (page + 1) + "\"> > </a>\n");
             }
         } else {
-            pages = pages.concat("<a class=\"next\" href=\"javascript:;\" style=\"color:#ccc\"> > </a>\n");
+            pages = pages.append("<a class=\"next\" href=\"javascript:;\" style=\"color:#ccc\"> > </a>\n");
         }
         return pages;
     }
 
-    private String addFirstPage(String pages) {
+    private StringBuilder addFirstPage(StringBuilder pages) {
         if (url.contains("?")) {
-            pages = pages.concat("<a href=\"" + url + "&" + param + "=1\">1</a> ... \n");
+            pages = pages.append("<a href=\"" + url + "&" + param + "=1\">1</a> ... \n");
         } else {
-            pages = pages.concat("<a href=\"" + url + "?" + param + "=1\">1</a> ... \n");
+            pages = pages.append("<a href=\"" + url + "?" + param + "=1\">1</a> ... \n");
         }
         return pages;
     }
 
-    private String addLastPage(String pages, int pageCount) {
+    private StringBuilder addLastPage(StringBuilder pages, int pageCount) {
         if (url.contains("?")) {
-            pages = pages.concat(" ... <a href=\"" + url + "&" + param + "=" + pageCount + "\">" + pageCount + "</a>\n");
+            pages = pages.append(" ... <a href=\"" + url + "&" + param + "=" + pageCount + "\">" + pageCount + "</a>\n");
         } else {
-            pages = pages.concat(" ... <a href=\"" + url + "?" + param + "=" + pageCount + "\">" + pageCount + "</a>\n");
+            pages = pages.append(" ... <a href=\"" + url + "?" + param + "=" + pageCount + "\">" + pageCount + "</a>\n");
         }
         return pages;
     }
 
-    private String addStepPages(String pages, int i) {
+    private StringBuilder addStepPages(StringBuilder pages, int i) {
         if (i != page) {
             if (url.contains("?")) {
-                pages = pages.concat("<a href=\"" + url + "&" + param + "=" + i + "\">" + i + "</a>\n");
+                pages = pages.append("<a href=\"" + url + "&" + param + "=" + i + "\">" + i + "</a>\n");
             } else {
-                pages = pages.concat("<a href=\"" + url + "?" + param + "=" + i + "\">" + i + "</a>\n");
+                pages = pages.append("<a href=\"" + url + "?" + param + "=" + i + "\">" + i + "</a>\n");
             }
         } else {
-            pages = pages.concat("<span class=\"current\">" + i + "</span>\n");
+            pages = pages.append("<span class=\"current\">" + i + "</span>\n");
         }
         return pages;
     }
