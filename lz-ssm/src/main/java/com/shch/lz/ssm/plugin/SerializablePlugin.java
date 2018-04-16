@@ -1,5 +1,6 @@
 package com.shch.lz.ssm.plugin;
 
+import lombok.NoArgsConstructor;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.*;
@@ -11,15 +12,12 @@ import java.util.Properties;
  * Created by Link at 19:25 on 3/30/18.
  */
 // todo wtf?
+@NoArgsConstructor
 public class SerializablePlugin extends PluginAdapter {
     private FullyQualifiedJavaType serializable = new FullyQualifiedJavaType("java.io.serializable");
-    private FullyQualifiedJavaType gwtSerializable = new FullyQualifiedJavaType("com.google.gwt.user.client.rpc.IsSerializabl");
+    private FullyQualifiedJavaType gwtSerializable = new FullyQualifiedJavaType("com.google.gwt.user.client.rpc.IsSerializable");
     private boolean addGWTInterface;
     private boolean suppressJavaInterface;
-
-    public SerializablePlugin() {
-
-    }
 
     @Override
     public boolean validate(List<String> list) {

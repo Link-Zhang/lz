@@ -31,6 +31,7 @@ public class BaseController {
             return "/403.jsp";
         }
         if (exception instanceof InvalidSessionException) {
+            // return "/error.jsp";
             return "/expire.jsp";
         }
         return "/error.jsp";

@@ -1,6 +1,7 @@
 package com.shch.lz.ssm.aspect;
 
 import com.alibaba.dubbo.rpc.RpcContext;
+import com.shch.lz.ssm.util.key.SystemClock;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -20,7 +21,8 @@ public class RpcLogAspect {
     @Before("execution(* *..rpc..*.*(..)")
     public void doBeforeInServiceLayer(JoinPoint joinPoint) {
         LOGGER.debug("doBeforeInServiceLayer");
-        startTime = System.currentTimeMillis();
+//        startTime = System.currentTimeMillis();
+        startTime = SystemClock.now();
     }
 
     @After("execution(* *..rpc..*.*(..)")

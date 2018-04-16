@@ -29,12 +29,12 @@ public class JdbcUtil {
         pstmt = conn.prepareStatement(sql);
         int index = 1;
         if (null != params && !params.isEmpty()) {
-            for (int i = 0; i < params.size(); i++) {
-                pstmt.setObject(index++, params.get(i));
+            for (Object param : params) {
+                pstmt.setObject(index++, param);
             }
         }
         result = pstmt.executeUpdate();
-        return result > 0 ? true : false;
+        return result > 0;
     }
 
     public List<Map> selectByParams(String sql, List params) throws SQLException {
@@ -42,8 +42,8 @@ public class JdbcUtil {
         int index = 1;
         pstmt = conn.prepareStatement(sql);
         if (null != params && !params.isEmpty()) {
-            for (int i = 0; i < params.size(); i++) {
-                pstmt.setObject(index++, params.get(i));
+            for (Object param : params) {
+                pstmt.setObject(index++, param);
             }
         }
         rs = pstmt.executeQuery();
