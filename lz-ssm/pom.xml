@@ -19,8 +19,8 @@
     <properties>
         <junit-version>4.12</junit-version>
         <maven-surefire-plugin-version>2.21.0</maven-surefire-plugin-version>
-        <spring-framework-version>4.3.14.RELEASE</spring-framework-version>
-        <spring-security-version>4.2.4.RELEASE</spring-security-version>
+        <spring-framework-version>4.3.16.RELEASE</spring-framework-version>
+        <spring-security-version>4.2.5.RELEASE</spring-security-version>
         <spring-session-version>2.0.2.RELEASE</spring-session-version>
         <spring-data-redis-version>2.0.5.RELEASE</spring-data-redis-version>
         <shiro-version>1.4.0</shiro-version>
@@ -28,7 +28,7 @@
         <mybatis-spring-version>1.3.2</mybatis-spring-version>
         <mybatis-generator-core-version>1.3.6</mybatis-generator-core-version>
         <mybatis-ehcache-version>1.1.0</mybatis-ehcache-version>
-        <mybatis-pagehelper-version>5.1.2</mybatis-pagehelper-version>
+        <mybatis-pagehelper-version>5.1.3</mybatis-pagehelper-version>
         <dubbo-version>2.6.1</dubbo-version>
         <zkclient-version>0.1</zkclient-version>
         <mysql-connector-java-version>6.0.6</mysql-connector-java-version>
@@ -36,14 +36,29 @@
         <jedis-version>2.9.0</jedis-version>
         <swagger-version>2.8.0</swagger-version>
         <activemq-version>5.7.0</activemq-version>
-        <aspectjweaver-version>1.8.13</aspectjweaver-version>
+        <aspectjweaver-version>1.9.0</aspectjweaver-version>
         <slf4j-version>1.7.25</slf4j-version>
         <servlet-api-version>4.0.0</servlet-api-version>
         <fluent-validator-version>1.0.9</fluent-validator-version>
-        <ehcache-version>3.5.2</ehcache-version>
+        <ehcache-version>2.10.4</ehcache-version>
         <velocity-version>1.7</velocity-version>
         <commons-io-version>2.6</commons-io-version>
         <lombok-version>1.16.20</lombok-version>
+        <commons-fileupload-version>1.3.3</commons-fileupload-version>
+        <commons-beanutils-version>1.9.3</commons-beanutils-version>
+        <commons-lang3-version>3.7</commons-lang3-version>
+        <commons-codec-version>1.11</commons-codec-version>
+        <commons-compress-version>1.16.1</commons-compress-version>
+        <persistence-api-version>1.0.2</persistence-api-version>
+        <validation-api-version>2.0.1.Final</validation-api-version>
+        <hibernate-validator-version>6.0.9.Final</hibernate-validator-version>
+        <thymeleaf-spring4-version>3.0.9.RELEASE</thymeleaf-spring4-version>
+        <json-lib-version>2.4</json-lib-version>
+        <fastjson-version>1.2.47</fastjson-version>
+        <jackson-version>2.9.5</jackson-version>
+        <mail-version>1.4.7</mail-version>
+        <httpclient-version>4.5.5</httpclient-version>
+        <jstl-version>1.2</jstl-version>
     </properties>
 
     <dependencyManagement>
@@ -265,7 +280,7 @@
 
         <!--ehcache-->
         <dependency>
-            <groupId>org.ehcache</groupId>
+            <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>${ehcache-version}</version>
         </dependency>
@@ -290,6 +305,122 @@
             <artifactId>lombok</artifactId>
             <version>${lombok-version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!--commons-fileupload-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload-version}</version>
+        </dependency>
+
+        <!--commons-beanutils-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils-version}</version>
+        </dependency>
+
+        <!--commons-lang3-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3-version}</version>
+        </dependency>
+
+        <!--commons-codec-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec-version}</version>
+        </dependency>
+
+        <!--commons-compress-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>${commons-compress-version}</version>
+        </dependency>
+
+        <!--persistence-api-->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>${persistence-api-version}</version>
+        </dependency>
+
+        <!--validation-api-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation-api-version}</version>
+        </dependency>
+
+        <!--hibernate-validator-->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator-version}</version>
+        </dependency>
+
+        <!--thymeleaf-spring4-->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
+
+        <!--json-lib-->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>${json-lib-version}</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson-version}</version>
+        </dependency>
+
+        <!--jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+        <!--mail-->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${mail-version}</version>
+        </dependency>
+
+        <!--httpclient-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient-version}</version>
+        </dependency>
+
+        <!--jstl-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl-version}</version>
         </dependency>
 
     </dependencies>
