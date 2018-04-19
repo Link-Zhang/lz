@@ -1,0 +1,43 @@
+{
+  "_from": "my97datepicker",
+  "_id": "my97datepicker@4.8.0",
+  "_inBundle": false,
+  "_integrity": "sha1-SBMyS3zVce2KAB908ODGFBKMIUg=",
+  "_location": "/my97datepicker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "my97datepicker",
+    "name": "my97datepicker",
+    "escapedName": "my97datepicker",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/my97datepicker/-/my97datepicker-4.8.0.tgz",
+  "_shasum": "4813324b7cd571ed8a001f74f0e0c614128c2148",
+  "_spec": "my97datepicker",
+  "_where": "/Users/Link/Developer/Node",
+  "author": {
+    "name": "my97"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "my97 datepicker http://www.my97.net/",
+  "keywords": [
+    "datepicker",
+    "my97"
+  ],
+  "license": "None",
+  "main": "WdatePicker.js",
+  "name": "my97datepicker",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "4.8.0"
+}

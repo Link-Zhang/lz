@@ -1,6 +1,5 @@
 package com.shch.lz.ssm.util;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,7 +34,7 @@ public class Paginator {
     @Setter
     private String query = "";
 
-    public Paginator(long total, int page, int rows, @NotNull HttpServletRequest request) {
+    public Paginator(long total, int page, int rows, HttpServletRequest request) {
         setTotal(total);
         setPage(page);
         setRows(rows);
