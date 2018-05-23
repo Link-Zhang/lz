@@ -5,7 +5,7 @@
     <groupId>com.shch.lz</groupId>
     <artifactId>lz</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>Link Zhang</name>
     <url>Link-Zhang.github.io</url>
