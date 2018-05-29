@@ -1,13 +1,13 @@
 import React from 'react';
-import {render} from 'react-dom';
-import App from './colorapp/App'
+import {render, unmountComponentAtNode} from 'react-dom';
+import Clock from './clock/Clock'
 
 const target = document.getElementById('react-container');
 
 window.React = React;
 
 render(
-    <App/>,
+    <Clock onClose={() => unmountComponentAtNode(target)}/>,
     target
 );
 
