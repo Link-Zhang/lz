@@ -22,6 +22,7 @@
     <modules>
         <module>lz-ssm</module>
         <module>lz-fe</module>
+        <module>lz-fe-react</module>
     </modules>
 
     <build>

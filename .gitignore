@@ -2,3 +2,5 @@
 *.iml
 target
 .DS_Store
+/lz-fe-react/node_modules
+/lz-fe-react/dist
