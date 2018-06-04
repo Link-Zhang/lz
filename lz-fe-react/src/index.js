@@ -1,16 +1,32 @@
 import React from 'react';
-import {render, unmountComponentAtNode} from 'react-dom';
-import Clock from './clock/Clock'
+import ReactDOM from 'react-dom';
+import registerServiceWorker from './registerServiceWorker';
+import 'typeface-roboto';
+import {Provider} from 'react-redux';
 
-const target = document.getElementById('react-container');
 
-window.React = React;
+import {fakeBackend} from './components/_helpers';
+import {BrowserRouter, Route} from 'react-router-dom';
+import LoginPage from "./views/LoginPage/LoginPage";
+import {store} from "./components/_helpers";
 
-render(
-    <Clock onClose={() => unmountComponentAtNode(target)}/>,
-    target
+import './index.css';
+
+fakeBackend();
+
+// render(
+//     <Provider store={store}>
+//         <App/>
+//     </Provider>,
+//     document.querySelector('#app'));
+
+ReactDOM.render(
+    <BrowserRouter>
+        <Route path="/login" component={LoginPage}/>
+    </BrowserRouter>,
+    document.querySelector('#app')
 );
 
-if (module.hot) {
-    module.hot.accept();
-}
+document.title = 'CMS';
+
+registerServiceWorker();
