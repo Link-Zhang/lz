@@ -4,26 +4,37 @@ import registerServiceWorker from './registerServiceWorker';
 import 'typeface-roboto';
 import {Provider} from 'react-redux';
 
-
 import {fakeBackend} from './components/_helpers';
 import {BrowserRouter, Route} from 'react-router-dom';
 import LoginPage from "./views/LoginPage/LoginPage";
-import {store} from "./components/_helpers";
+import CardHeader from './components/Card/CardHeader'
+
+import {createStore} from 'redux'
 
 import './index.css';
+import {authentication} from "./components/_reducers/authentication.reducer";
 
 fakeBackend();
 
-// render(
-//     <Provider store={store}>
-//         <App/>
-//     </Provider>,
-//     document.querySelector('#app'));
+const login = (state = {authentication: false}, action) => {
+    const authentication = state.authentication;
+    switch (action.type) {
+        case 'login':
+            return {authentication: !authentication};
+        default:
+            return state;
+    }
+};
+
+const store = createStore(login);
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Route path="/login" component={LoginPage}/>
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <Route path="/" component={LoginPage}/>
+        </BrowserRouter>
+    </Provider>
+    ,
     document.querySelector('#app')
 );
 

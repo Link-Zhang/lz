@@ -1,7 +1,12 @@
 import React from "react";
-import classNames from "classnames";
 import PropTypes from "prop-types";
+import classNames from "classnames";
+
 import {withStyles} from '@material-ui/core/styles';
+
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
+import CardFooter from './CardFooter';
 
 const cardStyle = {
     card: {
@@ -22,35 +27,67 @@ const cardStyle = {
         fontSize: ".875rem",
         transition: "all 300ms linear",
     },
-    cardPlain: {
-        background: "transparent",
-        boxShadow: "none"
+    loginForm: {
+        margin: "0"
     },
-    cardCarousel: {
-        overflow: "hidden"
+    cardHidden: {
+        opacity: "0",
+        transform: "translate3d(0, -60px, 0)"
     }
 };
 
-const Card = ({...props}) => {
-    const {classes, className, children, plain, carousel, ...rest} = props;
-    const cardClasses = classNames({
-        [classes.card]: true,
-        [classes.cardPlain]: plain,
-        [classes.cardCarousel]: carousel,
-        [className]: className !== undefined
-    });
-    return (
-        <div className={cardClasses} {...rest}>
-            {children}
-        </div>
-    );
-};
+class Card extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            cardAnimation: 'cardHidden',
+            submitted: false,
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        setTimeout(
+            function () {
+                this.setState({cardAnimation: ''});
+            }.bind(this),
+            500
+        );
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        this.setState({submitted: true});
+        // const {username, password} = this.state;
+        // const {dispatch} = this.props;
+        // if (username && password) {
+        //     dispatch(userActions.login(username, password));
+        // }
+        console.log("Click Login");
+    };
+
+    render() {
+        const {classes} = this.props;
+
+        const cardClasses = classNames({
+            [classes.card]: true,
+            [classes[this.state.cardAnimation]]: true
+        });
+
+        return (
+            <div className={cardClasses}>
+                <form className={classes.loginForm} method="POST">
+                    <CardHeader color={'colorBlue'} plainCard={false}/>
+                    <CardBody/>
+                    <CardFooter onClick={this.handleSubmit} color={'colorBlue'}/>
+                </form>
+            </div>
+        );
+    };
+}
 
 Card.propTypes = {
     classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
-    plain: PropTypes.bool,
-    carousel: PropTypes.bool
 };
 
 export default withStyles(cardStyle)(Card);
